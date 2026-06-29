@@ -9,38 +9,197 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SigninRouteImport } from './routes/signin'
+import { Route as DashRouteImport } from './routes/_dash'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashZonesRouteImport } from './routes/_dash.zones'
+import { Route as DashTwinRouteImport } from './routes/_dash.twin'
+import { Route as DashStaffRouteImport } from './routes/_dash.staff'
+import { Route as DashSettingsRouteImport } from './routes/_dash.settings'
+import { Route as DashRecommendationsRouteImport } from './routes/_dash.recommendations'
+import { Route as DashInventoryRouteImport } from './routes/_dash.inventory'
+import { Route as DashIntegrationsRouteImport } from './routes/_dash.integrations'
+import { Route as DashFootfallRouteImport } from './routes/_dash.footfall'
+import { Route as DashDashboardRouteImport } from './routes/_dash.dashboard'
+import { Route as DashAlertsRouteImport } from './routes/_dash.alerts'
 
+const SigninRoute = SigninRouteImport.update({
+  id: '/signin',
+  path: '/signin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashRoute = DashRouteImport.update({
+  id: '/_dash',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashZonesRoute = DashZonesRouteImport.update({
+  id: '/zones',
+  path: '/zones',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashTwinRoute = DashTwinRouteImport.update({
+  id: '/twin',
+  path: '/twin',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashStaffRoute = DashStaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashSettingsRoute = DashSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashRecommendationsRoute = DashRecommendationsRouteImport.update({
+  id: '/recommendations',
+  path: '/recommendations',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashInventoryRoute = DashInventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashIntegrationsRoute = DashIntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashFootfallRoute = DashFootfallRouteImport.update({
+  id: '/footfall',
+  path: '/footfall',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashDashboardRoute = DashDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => DashRoute,
+} as any)
+const DashAlertsRoute = DashAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => DashRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/signin': typeof SigninRoute
+  '/alerts': typeof DashAlertsRoute
+  '/dashboard': typeof DashDashboardRoute
+  '/footfall': typeof DashFootfallRoute
+  '/integrations': typeof DashIntegrationsRoute
+  '/inventory': typeof DashInventoryRoute
+  '/recommendations': typeof DashRecommendationsRoute
+  '/settings': typeof DashSettingsRoute
+  '/staff': typeof DashStaffRoute
+  '/twin': typeof DashTwinRoute
+  '/zones': typeof DashZonesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/signin': typeof SigninRoute
+  '/alerts': typeof DashAlertsRoute
+  '/dashboard': typeof DashDashboardRoute
+  '/footfall': typeof DashFootfallRoute
+  '/integrations': typeof DashIntegrationsRoute
+  '/inventory': typeof DashInventoryRoute
+  '/recommendations': typeof DashRecommendationsRoute
+  '/settings': typeof DashSettingsRoute
+  '/staff': typeof DashStaffRoute
+  '/twin': typeof DashTwinRoute
+  '/zones': typeof DashZonesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_dash': typeof DashRouteWithChildren
+  '/signin': typeof SigninRoute
+  '/_dash/alerts': typeof DashAlertsRoute
+  '/_dash/dashboard': typeof DashDashboardRoute
+  '/_dash/footfall': typeof DashFootfallRoute
+  '/_dash/integrations': typeof DashIntegrationsRoute
+  '/_dash/inventory': typeof DashInventoryRoute
+  '/_dash/recommendations': typeof DashRecommendationsRoute
+  '/_dash/settings': typeof DashSettingsRoute
+  '/_dash/staff': typeof DashStaffRoute
+  '/_dash/twin': typeof DashTwinRoute
+  '/_dash/zones': typeof DashZonesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/signin'
+    | '/alerts'
+    | '/dashboard'
+    | '/footfall'
+    | '/integrations'
+    | '/inventory'
+    | '/recommendations'
+    | '/settings'
+    | '/staff'
+    | '/twin'
+    | '/zones'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/signin'
+    | '/alerts'
+    | '/dashboard'
+    | '/footfall'
+    | '/integrations'
+    | '/inventory'
+    | '/recommendations'
+    | '/settings'
+    | '/staff'
+    | '/twin'
+    | '/zones'
+  id:
+    | '__root__'
+    | '/'
+    | '/_dash'
+    | '/signin'
+    | '/_dash/alerts'
+    | '/_dash/dashboard'
+    | '/_dash/footfall'
+    | '/_dash/integrations'
+    | '/_dash/inventory'
+    | '/_dash/recommendations'
+    | '/_dash/settings'
+    | '/_dash/staff'
+    | '/_dash/twin'
+    | '/_dash/zones'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashRoute: typeof DashRouteWithChildren
+  SigninRoute: typeof SigninRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signin': {
+      id: '/signin'
+      path: '/signin'
+      fullPath: '/signin'
+      preLoaderRoute: typeof SigninRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_dash': {
+      id: '/_dash'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof DashRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +207,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_dash/zones': {
+      id: '/_dash/zones'
+      path: '/zones'
+      fullPath: '/zones'
+      preLoaderRoute: typeof DashZonesRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/twin': {
+      id: '/_dash/twin'
+      path: '/twin'
+      fullPath: '/twin'
+      preLoaderRoute: typeof DashTwinRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/staff': {
+      id: '/_dash/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof DashStaffRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/settings': {
+      id: '/_dash/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof DashSettingsRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/recommendations': {
+      id: '/_dash/recommendations'
+      path: '/recommendations'
+      fullPath: '/recommendations'
+      preLoaderRoute: typeof DashRecommendationsRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/inventory': {
+      id: '/_dash/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof DashInventoryRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/integrations': {
+      id: '/_dash/integrations'
+      path: '/integrations'
+      fullPath: '/integrations'
+      preLoaderRoute: typeof DashIntegrationsRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/footfall': {
+      id: '/_dash/footfall'
+      path: '/footfall'
+      fullPath: '/footfall'
+      preLoaderRoute: typeof DashFootfallRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/dashboard': {
+      id: '/_dash/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashDashboardRouteImport
+      parentRoute: typeof DashRoute
+    }
+    '/_dash/alerts': {
+      id: '/_dash/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof DashAlertsRouteImport
+      parentRoute: typeof DashRoute
+    }
   }
 }
 
+interface DashRouteChildren {
+  DashAlertsRoute: typeof DashAlertsRoute
+  DashDashboardRoute: typeof DashDashboardRoute
+  DashFootfallRoute: typeof DashFootfallRoute
+  DashIntegrationsRoute: typeof DashIntegrationsRoute
+  DashInventoryRoute: typeof DashInventoryRoute
+  DashRecommendationsRoute: typeof DashRecommendationsRoute
+  DashSettingsRoute: typeof DashSettingsRoute
+  DashStaffRoute: typeof DashStaffRoute
+  DashTwinRoute: typeof DashTwinRoute
+  DashZonesRoute: typeof DashZonesRoute
+}
+
+const DashRouteChildren: DashRouteChildren = {
+  DashAlertsRoute: DashAlertsRoute,
+  DashDashboardRoute: DashDashboardRoute,
+  DashFootfallRoute: DashFootfallRoute,
+  DashIntegrationsRoute: DashIntegrationsRoute,
+  DashInventoryRoute: DashInventoryRoute,
+  DashRecommendationsRoute: DashRecommendationsRoute,
+  DashSettingsRoute: DashSettingsRoute,
+  DashStaffRoute: DashStaffRoute,
+  DashTwinRoute: DashTwinRoute,
+  DashZonesRoute: DashZonesRoute,
+}
+
+const DashRouteWithChildren = DashRoute._addFileChildren(DashRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashRoute: DashRouteWithChildren,
+  SigninRoute: SigninRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
